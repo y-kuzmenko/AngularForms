@@ -1,0 +1,20 @@
+{
+  "NAME": "Name",
+  "SURNAME": "Surname",
+  "EMAIL": "Email",
+  "PHONENUMBERS": "Phone Numbers",
+  "PHONE": "Phone",
+  "ADDPHONE": "Add Phone",
+  "SUBMIT": "Submit",
+  "SELECTCOUNTRY": "Select country",
+  "NAMEREQUIRED": "Name is required",
+  "SURNAMEREQUIRED": "Surname is required",
+  "EMAILREQUIRED": "Email is required",
+  "PHONEREQUIRED": "Phone is required",
+  "CODEREQUIRED": "Country code is required",
+  "INVALIDNAME": "Name must be at least 2 characters long",
+  "INVALIDSURNAME": "Surname must be at least 2 characters long",
+  "INVALIDEMAIL": "Please enter a valid email address",
+  "INVALIDPHONE": "Please enter a valid phone number",
+  "LANGUAGE": "Select language"
+}
