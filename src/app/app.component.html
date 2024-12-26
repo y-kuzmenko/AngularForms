@@ -87,13 +87,13 @@
             *ngIf="userForm.get('name')?.errors?.['notEmpty']"
             class="invalid"
           >
-            {{ "NAMEREQUIRED" | translate }}.
+            {{ "NAME_REQUIRED" | translate }}.
           </div>
           <div
             *ngIf="userForm.get('name')?.errors?.['minlength']"
             class="invalid"
           >
-            {{ "INVALIDNAME" | translate }}.
+            {{ "INVALID_NAME" | translate }}.
           </div>
         </div>
       </div>
@@ -116,13 +116,13 @@
             *ngIf="userForm.get('surname')?.errors?.['notEmpty']"
             class="invalid"
           >
-            {{ "SURNAMEREQUIRED" | translate }}.
+            {{ "SURNAME_REQUIRED" | translate }}.
           </div>
           <div
             *ngIf="userForm.get('surname')?.errors?.['minlength']"
             class="invalid"
           >
-            {{ "INVALIDSURNAME" | translate }}.
+            {{ "INVALID_SURNAME" | translate }}.
           </div>
         </div>
       </div>
@@ -144,18 +144,18 @@
             *ngIf="userForm.get('email')?.errors?.['required']"
             class="invalid"
           >
-            {{ "EMAILREQUIRED" | translate }}.
+            {{ "EMAIL_REQUIRED" | translate }}.
           </div>
           <div
             *ngIf="userForm.get('email')?.errors?.['pattern']"
             class="invalid"
           >
-            {{ "INVALIDEMAIL" | translate }}.
+            {{ "INVALID_EMAIL" | translate }}.
           </div>
         </div>
       </div>
       <div formArrayName="phones">
-        <h3>{{ "PHONENUMBERS" | translate }}:</h3>
+        <h3>{{ "PHONE_NUMBERS" | translate }}:</h3>
         <div
           *ngFor="let phone of phones.controls; let i = index"
           [formGroupName]="i"
@@ -163,7 +163,7 @@
         >
           <label for="number">{{ "PHONE" | translate }} {{ i + 1 }}:</label>
           <select formControlName="countryCode">
-            <option value="">{{ "SELECTCOUNTRY" | translate }}</option>
+            <option value="">{{ "SELECT_COUNTRY" | translate }}</option>
             <option
               *ngFor="let country of countryCodes"
               [value]="country.dial_code"
@@ -190,7 +190,7 @@
               *ngIf="phone.get('countryCode')?.errors?.['required']"
               class="invalid"
             >
-              {{ "CODEREQUIRED" | translate }}.
+              {{ "CODE_REQUIRED" | translate }}.
             </div>
           </div>
           <div
@@ -203,13 +203,13 @@
               *ngIf="phone.get('number')?.errors?.['required']"
               class="invalid"
             >
-              {{ "PHONEREQUIRED" | translate }}.
+              {{ "PHONE_REQUIRED" | translate }}.
             </div>
             <div
               *ngIf="phone.get('number')?.errors?.['pattern']"
               class="invalid"
             >
-              {{ "INVALIDPHONE" | translate }}.
+              {{ "INVALID_PHONE" | translate }}.
             </div>
           </div>
         </div>
@@ -218,7 +218,7 @@
           (click)="addPhone()"
           [disabled]="phones.length >= 3"
         >
-          {{ "ADDPHONE" | translate }}
+          {{ "ADD_PHONE" | translate }}
         </button>
       </div>
       <button type="submit" [disabled]="userForm.invalid">
