@@ -1,219 +1,87 @@
-<style>
-  h3 {
-    margin: 10px 0 0 5px;
-    font-size: medium;
-    font-weight: 400;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #1976d2;
-    color: white;
-    font-weight: 600;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-  .content {
-    display: flex;
-    margin: 82px auto 32px;
-    padding: 20px;
-    max-width: max-content;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 5px;
-  }
-
-  .form-group,
-  button {
-    margin: 5px;
-  }
-
-  label {
-    margin-right: 15px;
-  }
-
-  select {
-    max-width: 130px;
-    margin-right: 5px;
-  }
-
-  .invalid {
-    font-size: small;
-    color: red;
-  }
-</style>
-
-<div class="toolbar" role="banner">
+<div class="header" role="banner">
   <img
+    class="header__logo"
     width="40"
     alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
-  <span>{{"LANGUAGE" | translate}}</span>
-  <div class="spacer"></div>
-  <button (click)="switchLanguage('en')">English</button>
-  <button (click)="switchLanguage('ru')">Русский</button>
+  <span class="header__title">{{ "LANGUAGE" | translate }}</span>
+  <div class="header__spacer"></div>
+  <button class="header__button" (click)="switchLanguage('en')">English</button>
+  <button class="header__button" (click)="switchLanguage('ru')">Русский</button>
 </div>
 
 <div class="content" role="main">
-  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <div>
-      <div class="form-group">
-        <label for="name">{{ "NAME" | translate }}</label>
-        <input
-          class="form-control"
-          name="name"
+  <form class="user-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="user-form__fields">
+      <div class="user-form__field">
+        <label class="user-form__label" for="name">{{
+          "NAME" | translate
+        }}</label>
+        <app-custom-input
+          class="user-form__input"
           formControlName="name"
-          required
-          minlength="2"
-        />
-        <div
-          *ngIf="
-            userForm.get('name')?.invalid &&
-            (userForm.get('name')?.dirty || userForm.get('name')?.touched)
-          "
-        >
-          <div
-            *ngIf="userForm.get('name')?.errors?.['notEmpty']"
-            class="invalid"
-          >
-            {{ "NAME_REQUIRED" | translate }}.
-          </div>
-          <div
-            *ngIf="userForm.get('name')?.errors?.['minlength']"
-            class="invalid"
-          >
-            {{ "INVALID_NAME" | translate }}.
-          </div>
-        </div>
+          [requiredError]="'NAME_REQUIRED' | translate"
+          [minLengthError]="'INVALID_NAME' | translate"
+          [notEmptyError]="'INCORRECT_NAME' | translate"
+        ></app-custom-input>
       </div>
-      <div class="form-group">
-        <label for="surname">{{ "SURNAME" | translate }}</label>
-        <input
-          class="form-control"
-          name="surname"
+      <div class="user-form__field">
+        <label class="user-form__label" for="surname">{{
+          "SURNAME" | translate
+        }}</label>
+        <app-custom-input
+          class="user-form__input"
           formControlName="surname"
-          required
-          minlength="2"
-        />
-        <div
-          *ngIf="
-            userForm.get('surname')?.invalid &&
-            (userForm.get('surname')?.dirty || userForm.get('surname')?.touched)
-          "
-        >
-          <div
-            *ngIf="userForm.get('surname')?.errors?.['notEmpty']"
-            class="invalid"
-          >
-            {{ "SURNAME_REQUIRED" | translate }}.
-          </div>
-          <div
-            *ngIf="userForm.get('surname')?.errors?.['minlength']"
-            class="invalid"
-          >
-            {{ "INVALID_SURNAME" | translate }}.
-          </div>
-        </div>
+          [requiredError]="'SURNAME_REQUIRED' | translate"
+          [minLengthError]="'INVALID_SURNAME' | translate"
+          [notEmptyError]="'INCORRECT_SURNAME' | translate"
+        ></app-custom-input>
       </div>
-      <div class="form-group">
-        <label for="email">{{ "EMAIL" | translate }}</label>
-        <input
-          class="form-control"
-          name="email"
+      <div class="user-form__field">
+        <label class="user-form__label" for="email">{{
+          "EMAIL" | translate
+        }}</label>
+        <app-custom-input
+          class="user-form__input"
           formControlName="email"
-          required
-        />
-        <div
-          *ngIf="
-            userForm.get('email')?.invalid &&
-            (userForm.get('email')?.dirty || userForm.get('email')?.touched)
-          "
-        >
-          <div
-            *ngIf="userForm.get('email')?.errors?.['required']"
-            class="invalid"
-          >
-            {{ "EMAIL_REQUIRED" | translate }}.
-          </div>
-          <div
-            *ngIf="userForm.get('email')?.errors?.['pattern']"
-            class="invalid"
-          >
-            {{ "INVALID_EMAIL" | translate }}.
-          </div>
-        </div>
+          [requiredError]="'EMAIL_REQUIRED' | translate"
+          [emailError]="'INVALID_EMAIL' | translate"
+        ></app-custom-input>
       </div>
       <div formArrayName="phones">
-        <h3>{{ "PHONE_NUMBERS" | translate }}:</h3>
+        <h3 class="user-form__subtitle">{{ "PHONE_NUMBERS" | translate }}:</h3>
         <div
           *ngFor="let phone of phones.controls; let i = index"
           [formGroupName]="i"
-          class="form-group"
+          class="user-form__field"
         >
-          <label for="number">{{ "PHONE" | translate }} {{ i + 1 }}:</label>
-          <select formControlName="countryCode">
-            <option value="">{{ "SELECT_COUNTRY" | translate }}</option>
-            <option
-              *ngFor="let country of countryCodes"
-              [value]="country.dial_code"
-            >
-              {{ country.name }} ({{ country.dial_code }})
-            </option>
-          </select>
-          <input type="tel" formControlName="number" />
+          <label class="user-form__label" for="number"
+            >{{ "PHONE" | translate }} {{ i + 1 }}:</label
+          >
+          <app-custom-select
+            formControlName="countryCode"
+            [options]="countryCodes"
+            [selectCountry]="'SELECT_COUNTRY' | translate"
+            [requiredError]="'CODE_REQUIRED' | translate"
+          ></app-custom-select>
+          <app-custom-input
+            class="user-form__input"
+            formControlName="number"
+            [requiredError]="'PHONE_REQUIRED' | translate"
+            [phoneError]="'INVALID_PHONE' | translate"
+          ></app-custom-input>
           <button
+            class="user-form__remove-button"
             type="button"
             (click)="removePhone(i)"
             *ngIf="phones.length > 1"
           >
             Remove
           </button>
-          <div
-            *ngIf="
-              phone.get('countryCode')?.invalid &&
-              (phone.get('countryCode')?.dirty ||
-                phone.get('countryCode')?.touched)
-            "
-          >
-            <div
-              *ngIf="phone.get('countryCode')?.errors?.['required']"
-              class="invalid"
-            >
-              {{ "CODE_REQUIRED" | translate }}.
-            </div>
-          </div>
-          <div
-            *ngIf="
-              phone.get('number')?.invalid &&
-              (phone.get('number')?.dirty || phone.get('number')?.touched)
-            "
-          >
-            <div
-              *ngIf="phone.get('number')?.errors?.['required']"
-              class="invalid"
-            >
-              {{ "PHONE_REQUIRED" | translate }}.
-            </div>
-            <div
-              *ngIf="phone.get('number')?.errors?.['pattern']"
-              class="invalid"
-            >
-              {{ "INVALID_PHONE" | translate }}.
-            </div>
-          </div>
         </div>
         <button
+          class="user-form__add-button"
           type="button"
           (click)="addPhone()"
           [disabled]="phones.length >= 3"
@@ -221,7 +89,7 @@
           {{ "ADD_PHONE" | translate }}
         </button>
       </div>
-      <button type="submit" [disabled]="userForm.invalid">
+      <button class="user-form__submit-button" type="submit">
         {{ "SUBMIT" | translate }}
       </button>
     </div>

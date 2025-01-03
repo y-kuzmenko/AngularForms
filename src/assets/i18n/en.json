@@ -13,7 +13,9 @@
   "PHONE_REQUIRED": "Phone is required",
   "CODE_REQUIRED": "Country code is required",
   "INVALID_NAME": "Name must be at least 2 characters long",
+  "INCORRECT_NAME": "The name is incorrect",
   "INVALID_SURNAME": "Surname must be at least 2 characters long",
+  "INCORRECT_SURNAME": "The surname is incorrect",
   "INVALID_EMAIL": "Please enter a valid email address",
   "INVALID_PHONE": "Please enter a valid phone number",
   "LANGUAGE": "Select language"

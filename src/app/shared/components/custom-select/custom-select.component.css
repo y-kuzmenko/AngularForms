@@ -1,0 +1,9 @@
+.custom-select__field {
+  max-width: 130px;
+  margin-right: 5px;
+}
+
+.custom-select__error-message--required {
+  font-size: small;
+  color: red;
+}

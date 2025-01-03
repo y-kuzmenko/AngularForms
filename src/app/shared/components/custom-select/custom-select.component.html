@@ -1,0 +1,33 @@
+<div class="custom-select">
+  <select
+    class="custom-select__field"
+    [value]="value"
+    (change)="onSelectionChange($event)"
+    (blur)="onTouched()"
+  >
+    <option
+      class="custom-select__option custom-select__option--placeholder"
+      value=""
+    >
+      {{ selectCountry }}
+    </option>
+    <option
+      *ngFor="let option of options"
+      [value]="option.dial_code"
+      class="custom-select__option"
+    >
+      {{ option.name }} ({{ option.dial_code }})
+    </option>
+  </select>
+  <div
+    *ngIf="control && control.invalid && (control.dirty || control.touched)"
+    class="custom-select__error-container"
+  >
+    <div
+      *ngIf="control.errors?.['required']"
+      class="custom-select__error-message custom-select__error-message--required"
+    >
+      {{ requiredError }}
+    </div>
+  </div>
+</div>

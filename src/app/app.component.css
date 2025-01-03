@@ -1,0 +1,53 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.header img {
+  margin: 0 16px;
+}
+
+.content {
+  display: flex;
+  margin: 82px auto 32px;
+  padding: 20px;
+  max-width: max-content;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.user-form__subtitle {
+  margin: 10px 0 0 5px;
+  font-size: medium;
+  font-weight: 400;
+}
+
+.header__button,
+.user-form__remove-button {
+  margin: 0 5px;
+}
+
+.user-form__submit-button,
+.user-form__add-button {
+  margin: 5px 0;
+}
+
+.user-form__field {
+  display: flex;
+  align-items: start;
+  margin: 5px;
+}
+
+.user-form__label {
+  margin-right: 15px;
+}
